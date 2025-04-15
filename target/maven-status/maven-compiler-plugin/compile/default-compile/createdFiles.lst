@@ -1,0 +1,6 @@
+com\practica\Concesionari\Concesionario.class
+com\practica\Concesionari\Logic\Km0.class
+com\practica\Concesionari\Logic\SegundaMano.class
+com\practica\Concesionari\Logic\Coche.class
+com\practica\Concesionari\Logic\Nuevo.class
+com\practica\Concesionari\Persistens\xmlConector.class
