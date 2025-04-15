@@ -61,17 +61,23 @@ public class xmlConector {
         return doc;
         
     }
-    public void agregarCoche(String matricula){
+    public void agregarCoche(String matricula,String color, int precio){
         try{
             Document doc = cargarXml();
             Element root = doc.getRootElement();
-            Element coche = new Element("Coche");
-            coche.setAttribute("Matricula", matricula);
+            Element e_coche = new Element("Coche");
+            e_coche.setAttribute("Matricula", matricula);
+            // Color
+            Element e_color = new Element("Color");
+            e_color.setText(color);
+            // precio
+            Element e_precio = new Element("Precio");
+            e_precio.setText(String.valueOf(precio));
         }catch(Exception e){
             
         }
     }
     private Path ruta = Paths.get("Concesionario\\Concesionario.xml");
     /* Variables de clase */
-    private static int id_next; //Lleva un conte del id anterior
+    private static int id_next; //Lleva un conteo del id anterior
 }
