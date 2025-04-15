@@ -42,7 +42,6 @@ public class xmlConector {
         if(Files.notExists(ruta)){
             
             try{
-                
                 Element concesionario  = new Element("Concesionario");
                 Document doc = new Document(concesionario);
                 XMLOutputter xml = new XMLOutputter();
@@ -59,19 +58,44 @@ public class xmlConector {
     private Document cargarXml() throws JDOMException, IOException {
         Document doc = new SAXBuilder().build(new File(ruta.toString()));
         return doc;
-        
     }
-    public void agregarCoche(String matricula){
+    private void actualizarXml(Document doc) throws IOException{
+        XMLOutputter xml_output = new XMLOutputter(Format.getPrettyFormat());
+        xml_output.output(doc, new FileWriter(ruta.toString()));
+    }
+    public void agregarCoche(String matricula,String color, int precio){
         try{
             Document doc = cargarXml();
             Element root = doc.getRootElement();
-            Element coche = new Element("Coche");
-            coche.setAttribute("Matricula", matricula);
-        }catch(Exception e){
+            Element e_coche = new Element("Coche");
+            e_coche.setAttribute("Matricula", matricula);
+            // Color
+            Element e_color = new Element("Color");
+            e_color.setText(color);
+            // precio
+            Element e_precio = new Element("Precio");
+            e_precio.setText(String.valueOf(precio));
+            // Fecha garantia
+            Element e_fecha_garantia = new Element("Fecha_garantia");
+            e_fecha_garantia.setText("hoy");
+            // Antiguo propietario
+            Element e_antiguo_propietario = new Element("Antiguo_propietario");
+            e_antiguo_propietario.setText("yo");
+            // Add
+            e_coche.addContent(e_color);
+            e_coche.addContent(e_precio);
+            e_coche.addContent(e_fecha_garantia);
+            e_coche.addContent(e_antiguo_propietario);
             
+            root.addContent(e_coche);
+            actualizarXml(doc);
+            System.out.println("Succes");
+            
+        }catch(Exception e){
+            System.out.println("Failed");
         }
     }
     private Path ruta = Paths.get("Concesionario\\Concesionario.xml");
     /* Variables de clase */
-    private static int id_next; //Lleva un conte del id anterior
+    private static int id_next; //Lleva un conteo del id anterior
 }

@@ -22,6 +22,7 @@ public class Concesionario {
         dt = cl.getTime();
         System.out.println(dt);
         xmlConector xml_con = new xmlConector();
+        xml_con.agregarCoche("asdf", "asdf", 50);
     }
     
     
