@@ -10,8 +10,9 @@ package com.practica.Concesionari.Logic;
  */
 public class SegundaMano extends Coche {
     
-    public SegundaMano(String matricula, String color, double precio, double km) {
-        super(matricula, color, precio, km);
+    public SegundaMano(String matricula, String color, int precio, double km) {
+        super("Segunda" ,matricula, color, precio, km);
+        agregarCarroXml(this);
     }
     /* Variables */
     private String antiguo_propietario = "";

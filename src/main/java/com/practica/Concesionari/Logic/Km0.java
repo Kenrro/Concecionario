@@ -14,8 +14,9 @@ public class Km0 extends Coche {
     }
     
     
-    public Km0(String matricula, String color, double precio, double km) {
-        super(matricula, color, precio, km);
+    public Km0(String matricula, String color, int precio, double km) {
+        super("km0", matricula, color, precio, km);
+        agregarCarroXml(this);
         
     }
     

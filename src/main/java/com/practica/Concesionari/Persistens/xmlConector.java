@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Date;
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.JDOMException;
@@ -63,12 +64,14 @@ public class xmlConector {
         XMLOutputter xml_output = new XMLOutputter(Format.getPrettyFormat());
         xml_output.output(doc, new FileWriter(ruta.toString()));
     }
-    public void agregarCoche(String matricula,String color, int precio){
+    public void agregarCoche(String tipo, String matricula,String color, int precio, String fecha){
         try{
             Document doc = cargarXml();
             Element root = doc.getRootElement();
             Element e_coche = new Element("Coche");
             e_coche.setAttribute("Matricula", matricula);
+            e_coche.setAttribute("Tipo", tipo);
+            
             // Color
             Element e_color = new Element("Color");
             e_color.setText(color);
@@ -77,7 +80,7 @@ public class xmlConector {
             e_precio.setText(String.valueOf(precio));
             // Fecha garantia
             Element e_fecha_garantia = new Element("Fecha_garantia");
-            e_fecha_garantia.setText("hoy");
+            e_fecha_garantia.setText(fecha.isEmpty() ? null : fecha);
             // Antiguo propietario
             Element e_antiguo_propietario = new Element("Antiguo_propietario");
             e_antiguo_propietario.setText("yo");
@@ -96,6 +99,4 @@ public class xmlConector {
         }
     }
     private Path ruta = Paths.get("Concesionario\\Concesionario.xml");
-    /* Variables de clase */
-    private static int id_next; //Lleva un conteo del id anterior
 }

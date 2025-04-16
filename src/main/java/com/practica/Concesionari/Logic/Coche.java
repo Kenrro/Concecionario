@@ -4,6 +4,8 @@
  */
 package com.practica.Concesionari.Logic;
 
+import com.practica.Concesionari.Persistens.xmlConector;
+
 
 
 public abstract class Coche {
@@ -11,22 +13,25 @@ public abstract class Coche {
     public Coche() {
     }
 
-    public Coche(String matricula, String color, double precio, double km) {
+    public Coche(String tipo ,String matricula, String color, int precio, double km) {
         this.matricula = matricula;
         this.color = color;
         this.precio = precio;
         this.km = km;
+        this.tipo = tipo;
     }
-
-    
-    
     /* Variables */
-    private String matricula;
-    private String color;
-    private double precio;
-    private double km;
+    protected String tipo; // Especifica el tipo de carro, km0, nuevo o desegunda
+    protected String matricula;
+    protected String color;
+    protected int precio;
+    protected double km;
     /* Setters */
 
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+    
     public void setMatricula(String matricula) {
         this.matricula = matricula;
     }
@@ -35,7 +40,7 @@ public abstract class Coche {
         this.color = color;
     }
 
-    public void setPrecio(double precio) {
+    public void setPrecio(int precio) {
         this.precio = precio;
     }
 
@@ -44,6 +49,9 @@ public abstract class Coche {
     }
     /* Getters */
 
+    public String getTipo() {
+        return tipo;
+    }
     public String getMatricula() {
         return matricula;
     }
@@ -52,12 +60,22 @@ public abstract class Coche {
         return color;
     }
 
-    public double getPrecio() {
+    public int getPrecio() {
         return precio;
     }
 
     public double getKm() {
         return km;
     }
+    // Metodos de instancia 
+    
+    protected void agregarCarroXml(Coche co){
+        xml_con.agregarCoche(co.tipo ,co.matricula, co.getColor(), co.precio, "");
+    }
+    // Medotos de clase
+    
+    protected static xmlConector xml_con = new xmlConector();
+    
+   
     
 }

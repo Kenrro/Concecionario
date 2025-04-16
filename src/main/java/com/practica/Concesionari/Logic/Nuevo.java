@@ -13,9 +13,10 @@ import java.util.Date;
  */
 public class Nuevo extends Coche {
 
-    public Nuevo(String matricula, String color, double precio, double km) {
-        super(matricula, color, precio, km);
+    public Nuevo(String matricula, String color, int precio, double km) {
+        super("nuevo", matricula, color, precio, km);
         InitFechaGarantia();
+        agregarCarroXml(this);
     }
     
     /* Metodos */
@@ -27,7 +28,10 @@ public class Nuevo extends Coche {
         cl.add(cl.YEAR, 2);
         Finalizacion_garantia = cl.getTime();
     }
- 
+    @Override
+    protected void agregarCarroXml(Coche co){
+        xml_con.agregarCoche(co.tipo ,co.matricula, co.getColor(), co.precio, Finalizacion_garantia.toString());
+    }
     
     /* Variable */
     private Date Finalizacion_garantia;
