@@ -1,2 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Concesionario />
+<Concesionario>
+  <Coche Matricula="asdf">
+    <Color>asdf</Color>
+    <Precio>50</Precio>
+    <Fecha_garantia>hoy</Fecha_garantia>
+    <Antiguo_propietario>yo</Antiguo_propietario>
+  </Coche>
+  <Coche Matricula="asdf">
+    <Color>asdf</Color>
+    <Precio>50</Precio>
+    <Fecha_garantia>hoy</Fecha_garantia>
+    <Antiguo_propietario>yo</Antiguo_propietario>
+  </Coche>
+  <Coche Matricula="asdf">
+    <Color>asdf</Color>
+    <Precio>50</Precio>
+    <Fecha_garantia>hoy</Fecha_garantia>
+    <Antiguo_propietario>yo</Antiguo_propietario>
+  </Coche>
+</Concesionario>
