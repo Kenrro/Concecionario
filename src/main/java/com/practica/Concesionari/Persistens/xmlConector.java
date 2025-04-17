@@ -98,5 +98,21 @@ public class xmlConector {
             System.out.println("Failed");
         }
     }
+    // eliminar un elemento
+    public void eliminarCoche(String placa) throws JDOMException{
+        
+        Document doc = cargarXml();
+        Element root = doc.getRootElement();
+        for(Element e : root.getChildren()){
+            
+            if(e.getAttribute("Matricula").equals(placa)){
+                root.removeContent(e);
+                break;
+            }
+            
+        }
+        actualizarXml(doc);
+        
+    }
     private Path ruta = Paths.get("Concesionario\\Concesionario.xml");
 }

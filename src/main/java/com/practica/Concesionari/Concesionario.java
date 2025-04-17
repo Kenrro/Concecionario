@@ -20,6 +20,8 @@ public class Concesionario {
         System.out.println("hol");
         Nuevo km = new Nuevo("uno", "Gris", 5, 5);
         Km0 km0 = new Km0("dos", "Gris", 5, 5);
+        xmlConector xml = new xmlConector();
+        xml.eliminarCoche("cmd");
         /*Calendar cl = Calendar.getInstance();
         Date dt = new Date();
         cl.setTime(dt);
