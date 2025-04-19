@@ -10,8 +10,10 @@ package com.practica.Concesionari.Logic;
  */
 public class SegundaMano extends Coche {
     
-    public SegundaMano(String matricula, String color, int precio, double km) {
-        super("Segunda" ,matricula, color, precio, km);
+    public SegundaMano(String matricula, String color, int precio, double km, String antiguo_propietario) {
+        super("Segunda" ,matricula, color, precio);
+        this.km = km;
+        this.antiguo_propietario = antiguo_propietario;
         agregarCarroXml(this);
     }
     /* Variables */
@@ -20,7 +22,9 @@ public class SegundaMano extends Coche {
     public String getAntiguo_propietario() {
         return antiguo_propietario;
     }
-
+    protected void agregarCarroXml(Coche co){
+        xml_con.agregarCoche(co.tipo ,co.matricula, co.getColor(), co.precio, "", km, antiguo_propietario);
+    }
     public void setAntiguo_propietario(String antiguo_propietario) {
         this.antiguo_propietario = antiguo_propietario;
     }

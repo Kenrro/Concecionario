@@ -1,57 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Concesionario>
-  <Coche Matricula="cmd">
-    <Color>rojo</Color>
-    <Precio>5</Precio>
-    <Fecha_garantia>hoy</Fecha_garantia>
-    <Antiguo_propietario>yo</Antiguo_propietario>
-  </Coche>
-  <Coche Matricula="gds043">
+  <Coche Matricula="cinco" Tipo="km0">
     <Color>Gris</Color>
     <Precio>5</Precio>
-    <Fecha_garantia>hoy</Fecha_garantia>
-    <Antiguo_propietario>yo</Antiguo_propietario>
-  </Coche>
-  <Coche Matricula="gds043">
-    <Color>Gris</Color>
-    <Precio>5</Precio>
+    <KM>5.0</KM>
     <Fecha_garantia />
-    <Antiguo_propietario>yo</Antiguo_propietario>
+    <Antiguo_propietario />
   </Coche>
-  <Coche Matricula="gds043">
-    <Color>Gris</Color>
-    <Precio>5</Precio>
+  <Coche Matricula="69" Tipo="Segunda">
+    <Color>negro</Color>
+    <Precio>0</Precio>
+    <KM>0.0</KM>
     <Fecha_garantia />
-    <Antiguo_propietario>yo</Antiguo_propietario>
-  </Coche>
-  <Coche Matricula="gds043" Tipo="km0">
-    <Color>Gris</Color>
-    <Precio>5</Precio>
-    <Fecha_garantia />
-    <Antiguo_propietario>yo</Antiguo_propietario>
-  </Coche>
-  <Coche Matricula="gds043" Tipo="km0">
-    <Color>Gris</Color>
-    <Precio>5</Precio>
-    <Fecha_garantia />
-    <Antiguo_propietario>yo</Antiguo_propietario>
-  </Coche>
-  <Coche Matricula="gds043" Tipo="nuevo">
-    <Color>Gris</Color>
-    <Precio>5</Precio>
-    <Fecha_garantia>Fri Apr 16 12:01:40 CEST 2027</Fecha_garantia>
-    <Antiguo_propietario>yo</Antiguo_propietario>
-  </Coche>
-  <Coche Matricula="uno" Tipo="nuevo">
-    <Color>Gris</Color>
-    <Precio>5</Precio>
-    <Fecha_garantia>Fri Apr 16 12:03:05 CEST 2027</Fecha_garantia>
-    <Antiguo_propietario>yo</Antiguo_propietario>
-  </Coche>
-  <Coche Matricula="dos" Tipo="km0">
-    <Color>Gris</Color>
-    <Precio>5</Precio>
-    <Fecha_garantia />
-    <Antiguo_propietario>yo</Antiguo_propietario>
+    <Antiguo_propietario>Cristofer</Antiguo_propietario>
   </Coche>
 </Concesionario>

@@ -20,9 +20,10 @@ tipo de carro, cada uno tiene un atributo distintivo.
 
 Falta:
 En Persistencia
-    + Eliminar nodos
-    + Filtrar nodos
-    + Cargar en objetos
+    + Eliminar nodos /
+    + Hacer evitar matricula repetida /
+    + Filtrar nodos 
+    + Cargar en objetos /
     + al eliminar en objeto eliminar en xml
     + Aplicar estado de los vehiculos alquilables (Disponible/en uso)
     + 

@@ -8,12 +8,12 @@ import com.practica.Concesionari.Persistens.xmlConector;
 
 
 
-public abstract class Coche {
+public class Coche {
 
     public Coche() {
     }
 
-    public Coche(String tipo ,String matricula, String color, int precio, double km) {
+    public Coche(String tipo ,String matricula, String color, int precio) {
         this.matricula = matricula;
         this.color = color;
         this.precio = precio;
@@ -70,7 +70,7 @@ public abstract class Coche {
     // Metodos de instancia 
     
     protected void agregarCarroXml(Coche co){
-        xml_con.agregarCoche(co.tipo ,co.matricula, co.getColor(), co.precio, "");
+        xml_con.agregarCoche(co.tipo ,co.matricula, co.getColor(), co.precio, "", km, "");
     }
     // Medotos de clase
     
