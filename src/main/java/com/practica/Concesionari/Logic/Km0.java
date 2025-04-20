@@ -18,9 +18,19 @@ public class Km0 extends Coche {
         super("km0", matricula, color, precio);
         this.km = km;
         agregarCarroXml(this);
+        estado = "Disponible";
         
     }
     
     /* Variables */
+    private String estado;
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
     
 }
