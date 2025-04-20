@@ -43,11 +43,9 @@ public class xmlConector {
         } catch (Exception e){
             System.out.println(e);
         }
-        
     }
     private void crearXml(){
         if(Files.notExists(ruta)){
-            
             try{
                 Element concesionario  = new Element("Concesionario");
                 Document doc = new Document(concesionario);
@@ -58,7 +56,6 @@ public class xmlConector {
             } catch(Exception e){
                 System.out.println("No se ha podido crear el archivo xml.");
             }
-            
         }
     }
     // Permite cargar el xml
@@ -135,7 +132,6 @@ public class xmlConector {
                 root.removeContent(e);
                 break;
             }
-            
         }
         actualizarXml(doc);
     }
@@ -148,27 +144,23 @@ public class xmlConector {
         Document doc = cargarXml();
         Element root = doc.getRootElement();
         for(Element e : root.getChildren()){
-            if(e.getAttributeValue("Tipo").equals("nuevo")){
-                coche = new Nuevo(e.getAttributeValue("Matricula"), 
-                        e.getChildText("Color"), 
+            coche = switch (e.getAttributeValue("Tipo")) {
+                case "nuevo" -> new Nuevo(e.getAttributeValue("Matricula"),
+                        e.getChildText("Color"),
                         Integer.parseInt(e.getChildText("Precio")));
-            } else if(e.getAttributeValue("Tipo").equals("km0")){
-                coche = new Km0(e.getAttributeValue("Matricula"),
-                        e.getChildText("Color"), 
-                        Integer.parseInt(e.getChildText("Precio")), 
+                case "km0" -> new Km0(e.getAttributeValue("Matricula"),
+                        e.getChildText("Color"),
+                        Integer.parseInt(e.getChildText("Precio")),
                         Double.parseDouble(e.getChildText("KM")));
-            }
-            else{
-                coche = new SegundaMano(e.getAttributeValue("Matricula"),
-                        e.getChildText("Color"), 
-                        Integer.parseInt(e.getChildText("Precio")), 
+                default -> new SegundaMano(e.getAttributeValue("Matricula"),
+                        e.getChildText("Color"),
+                        Integer.parseInt(e.getChildText("Precio")),
                         Double.parseDouble(e.getChildText("KM")),
                         e.getChildText("Antiguo_propietario"));
-            }
+            };
             lista.add(coche);
         }
         return lista;
     }
-    
     private static final Path ruta = Paths.get("Concesionario\\Concesionario.xml");
 }

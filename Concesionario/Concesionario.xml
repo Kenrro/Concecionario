@@ -7,7 +7,21 @@
     <Fecha_garantia />
     <Antiguo_propietario />
   </Coche>
-  <Coche Matricula="69" Tipo="Segunda">
+  <Coche Matricula="Ocho" Tipo="km0">
+    <Color>asfd</Color>
+    <Precio>5</Precio>
+    <KM>5.0</KM>
+    <Fecha_garantia />
+    <Antiguo_propietario />
+  </Coche>
+  <Coche Matricula="Felic" Tipo="km0">
+    <Color>asfd</Color>
+    <Precio>5</Precio>
+    <KM>5.0</KM>
+    <Fecha_garantia />
+    <Antiguo_propietario />
+  </Coche>
+  <Coche Matricula="jose" Tipo="Segunda">
     <Color>negro</Color>
     <Precio>0</Precio>
     <KM>0.0</KM>

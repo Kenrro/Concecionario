@@ -4,6 +4,7 @@
 
 package com.practica.Concesionari;
 
+import com.practica.Concesionari.IGU.INIT;
 import com.practica.Concesionari.Logic.Coche;
 import com.practica.Concesionari.Logic.Km0;
 import com.practica.Concesionari.Logic.Nuevo;
@@ -24,13 +25,15 @@ public class Concesionario {
 
     public static void main(String[] args) throws JDOMException, IOException {
         System.out.println("hol");
-        Km0 km;
-        System.out.println(km = new Km0("cinco", "Gris", 5, 5));
-        SegundaMano se = new SegundaMano("69", "negro", 0, 0, "Cristofer");
+        Nuevo km;
+        System.out.println(km = new Nuevo("cmd 6598", "Rojo", 10500));
+        SegundaMano se = new SegundaMano("jose", "negro", 0, 0, "Cristofer");
         lista_coches = xml.listarCoches();
         for(Coche c : lista_coches){
             System.out.println(c.getMatricula());
         }
+        INIT com = new INIT();
+        com.setVisible(true);
         
         /*Calendar cl = Calendar.getInstance();
         Date dt = new Date();
@@ -40,6 +43,7 @@ public class Concesionario {
         System.out.println(dt);
         xmlConector xml_con = new xmlConector();
         xml_con.agregarCoche("asdf", "asdf", 50);*/
+        xml.eliminarCoche("69");
     }
     
     // Atributos

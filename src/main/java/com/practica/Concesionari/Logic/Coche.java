@@ -5,6 +5,8 @@
 package com.practica.Concesionari.Logic;
 
 import com.practica.Concesionari.Persistens.xmlConector;
+import java.util.Calendar;
+import java.util.Date;
 
 
 
@@ -19,6 +21,7 @@ public class Coche {
         this.precio = precio;
         this.km = km;
         this.tipo = tipo;
+        InitFechaGarantia();
     }
     /* Variables */
     protected String tipo; // Especifica el tipo de carro, km0, nuevo o desegunda
@@ -26,6 +29,8 @@ public class Coche {
     protected String color;
     protected int precio;
     protected double km;
+    protected  Date Finalizacion_garantia;
+    
     /* Setters */
 
     public void setTipo(String tipo) {
@@ -47,6 +52,11 @@ public class Coche {
     public void setKm(double km) {
         this.km = km;
     }
+
+    public void setFinalizacion_garantia(Date Finalizacion_garantia) {
+        this.Finalizacion_garantia = Finalizacion_garantia;
+    }
+    
     /* Getters */
 
     public String getTipo() {
@@ -67,10 +77,20 @@ public class Coche {
     public double getKm() {
         return km;
     }
+
+    public Date getFinalizacion_garantia() {
+        return Finalizacion_garantia;
+    }
+    
     // Metodos de instancia 
     
     protected void agregarCarroXml(Coche co){
         xml_con.agregarCoche(co.tipo ,co.matricula, co.getColor(), co.precio, "", km, "");
+     
+    }
+    private void InitFechaGarantia(){
+        
+        Finalizacion_garantia = null;
     }
     // Medotos de clase
     
