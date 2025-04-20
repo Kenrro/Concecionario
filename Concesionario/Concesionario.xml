@@ -21,6 +21,13 @@
     <Fecha_garantia />
     <Antiguo_propietario />
   </Coche>
+  <Coche Matricula="cmd 6598" Tipo="nuevo">
+    <Color>Rojo</Color>
+    <Precio>10500</Precio>
+    <KM>0.0</KM>
+    <Fecha_garantia>Tue Apr 20 21:59:27 CEST 2027</Fecha_garantia>
+    <Antiguo_propietario />
+  </Coche>
   <Coche Matricula="jose" Tipo="Segunda">
     <Color>negro</Color>
     <Precio>0</Precio>

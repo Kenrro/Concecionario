@@ -15,7 +15,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import org.jdom2.Document;
 import org.jdom2.Element;
@@ -29,7 +28,8 @@ import org.jdom2.output.XMLOutputter;
  * @author Kevin
  */
 public class xmlConector {
-
+    
+    // Solo debe crear, eliminar, retornar debe tratar con elementos, y con el xml
     public xmlConector() {
         estructuraDirecotrio();
         crearXml();
@@ -81,37 +81,12 @@ public class xmlConector {
         }
         return false;
     }
-    public boolean agregarCoche(String tipo, String matricula,String color, int precio, String fecha, double km, String antiguo_propietario){
+    public boolean agregarCoche(Element elemento){
         try{
-            if(comprobarExitencia(matricula)) return false;
+            if(comprobarExitencia(elemento.getAttributeValue("Matricula"))) return false;
             Document doc = cargarXml();
             Element root = doc.getRootElement();
-            Element e_coche = new Element("Coche");
-            e_coche.setAttribute("Matricula", matricula);
-            e_coche.setAttribute("Tipo", tipo);
-            // Color
-            Element e_color = new Element("Color");
-            e_color.setText(color);
-            // precio
-            Element e_precio = new Element("Precio");
-            e_precio.setText(String.valueOf(precio));
-            // km
-            Element e_km = new Element("KM");
-            e_km.setText(Double.toString(km).equals("0") ? null : Double.toString(km));
-            // Fecha garantia
-            Element e_fecha_garantia = new Element("Fecha_garantia");
-            e_fecha_garantia.setText(fecha.isEmpty() ? null : fecha);
-            // Antiguo propietario
-            Element e_antiguo_propietario = new Element("Antiguo_propietario");
-            e_antiguo_propietario.setText(antiguo_propietario.isEmpty() ? null : antiguo_propietario);
-            // Add
-            e_coche.addContent(e_color);
-            e_coche.addContent(e_precio);
-            e_coche.addContent(e_km);
-            e_coche.addContent(e_fecha_garantia);
-            e_coche.addContent(e_antiguo_propietario);
-            
-            root.addContent(e_coche);
+            root.addContent(elemento);
             actualizarXml(doc);
             System.out.println("Succes");
             
@@ -138,29 +113,9 @@ public class xmlConector {
     // Metodos de clase
     
     // Lista todos los coches y los retorna, de esta forma se cargan al empezar el programa
-    public List<Coche> listarCoches() throws JDOMException, IOException{
-        List<Coche> lista = new ArrayList<>();
-        Coche coche;
-        Document doc = cargarXml();
-        Element root = doc.getRootElement();
-        for(Element e : root.getChildren()){
-            coche = switch (e.getAttributeValue("Tipo")) {
-                case "nuevo" -> new Nuevo(e.getAttributeValue("Matricula"),
-                        e.getChildText("Color"),
-                        Integer.parseInt(e.getChildText("Precio")));
-                case "km0" -> new Km0(e.getAttributeValue("Matricula"),
-                        e.getChildText("Color"),
-                        Integer.parseInt(e.getChildText("Precio")),
-                        Double.parseDouble(e.getChildText("KM")));
-                default -> new SegundaMano(e.getAttributeValue("Matricula"),
-                        e.getChildText("Color"),
-                        Integer.parseInt(e.getChildText("Precio")),
-                        Double.parseDouble(e.getChildText("KM")),
-                        e.getChildText("Antiguo_propietario"));
-            };
-            lista.add(coche);
-        }
-        return lista;
+    public List<Element> listarCoches() throws JDOMException, IOException{
+        
+        return cargarXml().getRootElement().getChildren();
     }
     private static final Path ruta = Paths.get("Concesionario\\Concesionario.xml");
 }

@@ -1,0 +1,37 @@
+Resumen:
+
+Aplicación de gestion de coches, tenemos tres tipos
+nuevos, km0 y segunda mano.
+Debemos poder: vender y alquilar (Requeridos por la práctica)
+Propiedades de las clases en el uml
+
+Llevamos:
+
+Diseño de las 4 clases principales casi terminado, cuentan en
+su interior con un gestorXml estatico para poder guardar los nuevos
+coches en el xml.
+
+XML: se puede agregar en el xml y recuperar la información, nos falta
+poder convertir los nodos en objetos coche, para en algun momento
+cargarlos al iniciar la aplicación.
+
+hay que poder eliminar y filtrar, hay una imagen de el resultado de cada
+tipo de carro, cada uno tiene un atributo distintivo.
+
+Falta:
+En Persistencia
+    + Eliminar nodos /
+    + Hacer evitar matricula repetida /
+    + Filtrar nodos 
+    + Cargar en objetos /
+    + al eliminar en objeto eliminar en xml
+    + Aplicar estado de los vehiculos alquilables (Disponible/en uso)
+    + 
+En logica
+    + Lógica de vender y alquilar
+    + Listar los vehiculos dependiendo de su tipo
+    + Todo debe funcionar de tal forma que se pueda llamar desde
+    el igu
+    + 
+Igu
+    + Hacerlo al tener un primera versión estable

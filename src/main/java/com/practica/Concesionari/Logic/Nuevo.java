@@ -28,10 +28,6 @@ public class Nuevo extends Coche {
         cl.add(cl.YEAR, 2);
         Finalizacion_garantia = cl.getTime();
     }
-    @Override
-    protected void agregarCarroXml(Coche co){
-        xml_con.agregarCoche(co.tipo ,co.matricula, co.getColor(), co.precio, Finalizacion_garantia.toString(), km, "");
-    }
     
     /* Variable */
     private Date Finalizacion_garantia;

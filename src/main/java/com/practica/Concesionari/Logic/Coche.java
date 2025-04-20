@@ -4,6 +4,7 @@
  */
 package com.practica.Concesionari.Logic;
 
+import com.practica.Concesionari.Persistens.CocheDAOImplement;
 import com.practica.Concesionari.Persistens.xmlConector;
 import java.util.Calendar;
 import java.util.Date;
@@ -85,7 +86,7 @@ public class Coche {
     // Metodos de instancia 
     
     protected void agregarCarroXml(Coche co){
-        xml_con.agregarCoche(co.tipo ,co.matricula, co.getColor(), co.precio, "", km, "");
+        xml_con.crear(this);
      
     }
     private void InitFechaGarantia(){
@@ -94,7 +95,7 @@ public class Coche {
     }
     // Medotos de clase
     
-    protected static xmlConector xml_con = new xmlConector();
+    protected static CocheDAOImplement xml_con = new CocheDAOImplement();
     
    
     

@@ -28,6 +28,8 @@ public class Concesionario {
         Nuevo km;
         System.out.println(km = new Nuevo("cmd 6598", "Rojo", 10500));
         SegundaMano se = new SegundaMano("jose", "negro", 0, 0, "Cristofer");
+        
+        
         lista_coches = xml.listarCoches();
         for(Coche c : lista_coches){
             System.out.println(c.getMatricula());
