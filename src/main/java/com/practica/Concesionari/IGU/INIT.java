@@ -7,6 +7,8 @@ package com.practica.Concesionari.IGU;
 import com.practica.Concesionari.Logic.Coche;
 import com.practica.Concesionari.Logic.Km0;
 import com.practica.Concesionari.Logic.SegundaMano;
+import com.practica.Concesionari.Persistens.CocheDAO;
+import com.practica.Concesionari.Persistens.CocheDAOImplement;
 import com.practica.Concesionari.Persistens.xmlConector;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -20,7 +22,7 @@ import org.jdom2.JDOMException;
  * @author kenrr
  */
 public class INIT extends javax.swing.JFrame {
-
+    protected CocheDAO dao = new CocheDAOImplement();
     /**
      * Creates new form INIT
      */
@@ -32,7 +34,7 @@ public class INIT extends javax.swing.JFrame {
     
     protected List<Coche> filtrarCoches() throws JDOMException, IOException{
         List<Coche> lista = new ArrayList<Coche>();
-        for(Coche c : new xmlConector().listarCoches()){
+        for(Coche c : dao.listar()){
             
             if(criterio.equals("km0")){
                 if(c.getTipo().equals("km0")){

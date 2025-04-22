@@ -9,7 +9,10 @@ com\practica\Concesionari\Logic\Km0.class
 com\practica\Concesionari\IGU\INIT.class
 com\practica\Concesionari\IGU\INIT$10.class
 com\practica\Concesionari\IGU\INIT$9.class
+<<<<<<< HEAD
 com\practica\Concesionari\Persistens\CocheDAOImplement.class
+=======
+>>>>>>> 133bf375967bc0681bd3490df8446d7f461e3214
 com\practica\Concesionari\IGU\INIT$5.class
 com\practica\Concesionari\IGU\INIT$6.class
 com\practica\Concesionari\Persistens\CocheDAO.class

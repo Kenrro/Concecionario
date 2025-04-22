@@ -12,6 +12,8 @@ import com.practica.Concesionari.Persistens.xmlConector;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.jdom2.Element;
 import org.jdom2.JDOMException;
 
@@ -70,22 +72,28 @@ public class CocheDAOImplement implements CocheDAO {
     public List<Coche> listar() {
         List<Coche> lista = new ArrayList<>();
         Coche coche;
-        for(Element e : com.listarCoches()){
-            coche = switch (e.getAttributeValue("Tipo")) {
-                case "nuevo" -> new Nuevo(e.getAttributeValue("Matricula"),
-                        e.getChildText("Color"),
-                        Integer.parseInt(e.getChildText("Precio")));
-                case "km0" -> new Km0(e.getAttributeValue("Matricula"),
-                        e.getChildText("Color"),
-                        Integer.parseInt(e.getChildText("Precio")),
-                        Double.parseDouble(e.getChildText("KM")));
-                default -> new SegundaMano(e.getAttributeValue("Matricula"),
-                        e.getChildText("Color"),
-                        Integer.parseInt(e.getChildText("Precio")),
-                        Double.parseDouble(e.getChildText("KM")),
-                        e.getChildText("Antiguo_propietario"));
-            };
-            lista.add(coche);
+        try {
+            for(Element e : com.listarCoches()){
+                coche = switch (e.getAttributeValue("Tipo")) {
+                    case "nuevo" -> new Nuevo(e.getAttributeValue("Matricula"),
+                            e.getChildText("Color"),
+                            Integer.parseInt(e.getChildText("Precio")));
+                    case "km0" -> new Km0(e.getAttributeValue("Matricula"),
+                            e.getChildText("Color"),
+                            Integer.parseInt(e.getChildText("Precio")),
+                            Double.parseDouble(e.getChildText("KM")));
+                    default -> new SegundaMano(e.getAttributeValue("Matricula"),
+                            e.getChildText("Color"),
+                            Integer.parseInt(e.getChildText("Precio")),
+                            Double.parseDouble(e.getChildText("KM")),
+                            e.getChildText("Antiguo_propietario"));
+                };
+                lista.add(coche);
+            }
+        } catch (JDOMException ex) {
+            Logger.getLogger(CocheDAOImplement.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(CocheDAOImplement.class.getName()).log(Level.SEVERE, null, ex);
         }
         return lista;
     }

@@ -9,6 +9,8 @@ import com.practica.Concesionari.Logic.Coche;
 import com.practica.Concesionari.Logic.Km0;
 import com.practica.Concesionari.Logic.Nuevo;
 import com.practica.Concesionari.Logic.SegundaMano;
+import com.practica.Concesionari.Persistens.CocheDAO;
+import com.practica.Concesionari.Persistens.CocheDAOImplement;
 import java.util.Calendar;
 import java.util.Date;
 import com.practica.Concesionari.Persistens.xmlConector;
@@ -28,9 +30,9 @@ public class Concesionario {
         Nuevo km;
         System.out.println(km = new Nuevo("cmd 6598", "Rojo", 10500));
         SegundaMano se = new SegundaMano("jose", "negro", 0, 0, "Cristofer");
+        CocheDAO dao = new CocheDAOImplement();
         
-        
-        lista_coches = xml.listarCoches();
+        lista_coches = dao.listar();
         for(Coche c : lista_coches){
             System.out.println(c.getMatricula());
         }
