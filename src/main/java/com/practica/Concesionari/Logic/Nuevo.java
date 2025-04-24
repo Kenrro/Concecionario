@@ -16,10 +16,10 @@ public class Nuevo extends Coche {
     public Nuevo(String matricula, String color, int precio) {
         super("nuevo", matricula, color, precio);
         InitFechaGarantia();
-        agregarCarroXml(this);
     }
     
     /* Metodos */
+    // Asigna dos años a la fecha actual, esa sera la fecha de finalización de la garantia.
     private void InitFechaGarantia(){
         
         Calendar cl = Calendar.getInstance();
@@ -30,7 +30,7 @@ public class Nuevo extends Coche {
     }
     
     /* Variable */
-    private Date Finalizacion_garantia;
+    private Date Finalizacion_garantia; 
     
     /* Getters */
     public Date getFinalizacion_garantia() {

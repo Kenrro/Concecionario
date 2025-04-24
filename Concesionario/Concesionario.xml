@@ -36,4 +36,20 @@
     <Antiguo_propietario>Cristofer</Antiguo_propietario>
     <Estado />
   </Coche>
+  <Coche Matricula="6845 SDE" Tipo="nuevo">
+    <Color>Negro</Color>
+    <Precio>1000</Precio>
+    <KM>0.0</KM>
+    <Fecha_garantia>Fri Apr 23 12:43:37 CEST 2027</Fecha_garantia>
+    <Antiguo_propietario />
+    <Estado />
+  </Coche>
+  <Coche Matricula="Jeni 1351" Tipo="Segunda">
+    <Color>Negro</Color>
+    <Precio>5000</Precio>
+    <KM>200.0</KM>
+    <Fecha_garantia />
+    <Antiguo_propietario>Kevin Misahel Zelaya Peña</Antiguo_propietario>
+    <Estado />
+  </Coche>
 </Concesionario>

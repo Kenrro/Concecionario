@@ -28,7 +28,7 @@ public class Concesionario {
     public static void main(String[] args) throws JDOMException, IOException {
         System.out.println("hol");
         Nuevo km;
-        System.out.println(km = new Nuevo("cmd 6598", "Rojo", 10500));
+        System.out.println(km = new Nuevo("69 6598", "Rojo", 10500));
         SegundaMano se = new SegundaMano("jose", "negro", 0, 0, "Cristofer");
         CocheDAO dao = new CocheDAOImplement();
         
@@ -47,7 +47,7 @@ public class Concesionario {
         System.out.println(dt);
         xmlConector xml_con = new xmlConector();
         xml_con.agregarCoche("asdf", "asdf", 50);*/
-        xml.eliminarCoche("69");
+        dao.eliminar(km);
     }
     
     // Atributos

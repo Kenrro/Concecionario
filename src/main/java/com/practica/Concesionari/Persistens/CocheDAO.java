@@ -7,12 +7,9 @@ package com.practica.Concesionari.Persistens;
 import com.practica.Concesionari.Logic.Coche;
 import java.util.List;
 
-/**
- *
- * @author kenrr
- */
+// Interfaz para aplicar el patron DAO, me facilitara reutilizar todo este código para por ejemplo, cambiar a una base de datos.
 public interface CocheDAO {
     public boolean crear(Coche coche);
-    public boolean eliminar();
+    public boolean eliminar(Coche coche);
     public List<Coche> listar();
 }

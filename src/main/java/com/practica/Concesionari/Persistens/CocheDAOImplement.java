@@ -8,7 +8,6 @@ import com.practica.Concesionari.Logic.Coche;
 import com.practica.Concesionari.Logic.Km0;
 import com.practica.Concesionari.Logic.Nuevo;
 import com.practica.Concesionari.Logic.SegundaMano;
-import com.practica.Concesionari.Persistens.xmlConector;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,14 +16,15 @@ import java.util.logging.Logger;
 import org.jdom2.Element;
 import org.jdom2.JDOMException;
 
-/**
- *
- * @author kenrr
- */
+// Implementación de la interfaz CocheDAO
 public class CocheDAOImplement implements CocheDAO {
-
+    // Aquí aplico el patron DAO, para poner en practica la responsabilidad unica
+    // de esta forma mis clases son más limpias y claras de leer.
+    
     xmlConector com = new xmlConector();
     @Override
+    // Recibe un objeto de las subclases que heredan de coche y las transforma a
+    // Element, para luego pasarlo al xmlConector
     public boolean crear(Coche coche) {
         // Elemento
         Element nuevo_elemento = new Element("Coche");
@@ -38,7 +38,7 @@ public class CocheDAOImplement implements CocheDAO {
         // Nuevos
         String string_fecha = "";
         if (coche instanceof Nuevo) {
-            string_fecha = coche.getFinalizacion_garantia().toString();
+            string_fecha = ((Nuevo)coche).getFinalizacion_garantia().toString();
         }
         Element fecha = new Element("Fecha_garantia").setText(string_fecha);
         // Segunda mano
@@ -60,14 +60,25 @@ public class CocheDAOImplement implements CocheDAO {
         nuevo_elemento.addContent(fecha);
         nuevo_elemento.addContent(antiguo_propietario);
         nuevo_elemento.addContent(estado);
-        return com.agregarCoche(nuevo_elemento);
+        return com.agregarCoche(nuevo_elemento); // Retorna true si se pudo crear y false si no
         
     }
+    // Envia la matricula al XmlConector para eliminarlo, esto al comprar un coche.
     @Override
-    public boolean eliminar() {
-        return false;
+    public boolean eliminar(Coche coche) {
+        try {
+            com.eliminarCoche(coche.getMatricula());
+            
+        } catch (JDOMException ex) {
+            Logger.getLogger(CocheDAOImplement.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        } catch (IOException ex) {
+            Logger.getLogger(CocheDAOImplement.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+        return true;
     }
-
+    // Recibe los Element que retorna el XmlConector, y los transforma al tipo de coche adecuado (Nuevo, Km0, SegundaMano)
     @Override
     public List<Coche> listar() {
         List<Coche> lista = new ArrayList<>();
@@ -95,7 +106,7 @@ public class CocheDAOImplement implements CocheDAO {
         } catch (IOException ex) {
             Logger.getLogger(CocheDAOImplement.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return lista;
+        return lista; // Retorna la lista.
     }
 
     

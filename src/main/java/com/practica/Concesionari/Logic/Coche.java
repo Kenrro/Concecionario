@@ -4,13 +4,11 @@
  */
 package com.practica.Concesionari.Logic;
 
-import com.practica.Concesionari.Persistens.CocheDAOImplement;
-import com.practica.Concesionari.Persistens.xmlConector;
-import java.util.Calendar;
+
 import java.util.Date;
 
 
-
+// Generalización de los tipos de coche, contiene los atributos comunes.
 public class Coche {
 
     public Coche() {
@@ -20,9 +18,7 @@ public class Coche {
         this.matricula = matricula;
         this.color = color;
         this.precio = precio;
-        this.km = km;
         this.tipo = tipo;
-        InitFechaGarantia();
     }
     /* Variables */
     protected String tipo; // Especifica el tipo de carro, km0, nuevo o desegunda
@@ -30,7 +26,6 @@ public class Coche {
     protected String color;
     protected int precio;
     protected double km;
-    protected  Date Finalizacion_garantia;
     
     /* Setters */
 
@@ -54,9 +49,6 @@ public class Coche {
         this.km = km;
     }
 
-    public void setFinalizacion_garantia(Date Finalizacion_garantia) {
-        this.Finalizacion_garantia = Finalizacion_garantia;
-    }
     
     /* Getters */
 
@@ -79,23 +71,15 @@ public class Coche {
         return km;
     }
 
-    public Date getFinalizacion_garantia() {
-        return Finalizacion_garantia;
-    }
+   
     
     // Metodos de instancia 
     
-    protected void agregarCarroXml(Coche co){
-        xml_con.crear(this);
-     
-    }
-    private void InitFechaGarantia(){
-        
-        Finalizacion_garantia = null;
-    }
+    
+  
     // Medotos de clase
     
-    protected static CocheDAOImplement xml_con = new CocheDAOImplement();
+    
     
    
     

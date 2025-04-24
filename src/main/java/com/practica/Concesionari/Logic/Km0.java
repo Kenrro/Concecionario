@@ -17,18 +17,16 @@ public class Km0 extends Coche {
     public Km0(String matricula, String color, int precio, double km) {
         super("km0", matricula, color, precio);
         this.km = km;
-        agregarCarroXml(this);
         estado = "Disponible";
-        
     }
     
     /* Variables */
     private String estado;
-
+    // Único de esta clase, permite asignar un "Disponible" y en "Uso"
+    // De esta forma, en el IGU se desactiva la opción para poder alquilar los que estan en uso.
     public String getEstado() {
         return estado;
     }
-
     public void setEstado(String estado) {
         this.estado = estado;
     }

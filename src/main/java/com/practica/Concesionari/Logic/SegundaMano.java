@@ -14,7 +14,6 @@ public class SegundaMano extends Coche {
         super("Segunda" ,matricula, color, precio);
         this.km = km;
         this.antiguo_propietario = antiguo_propietario;
-        agregarCarroXml(this);
     }
     /* Variables */
     private String antiguo_propietario = "";
@@ -22,6 +21,7 @@ public class SegundaMano extends Coche {
     public String getAntiguo_propietario() {
         return antiguo_propietario;
     }
+    // Metodo único de esta clase
     public void setAntiguo_propietario(String antiguo_propietario) {
         this.antiguo_propietario = antiguo_propietario;
     }

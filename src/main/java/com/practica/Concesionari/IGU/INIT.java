@@ -6,6 +6,7 @@ package com.practica.Concesionari.IGU;
 
 import com.practica.Concesionari.Logic.Coche;
 import com.practica.Concesionari.Logic.Km0;
+import com.practica.Concesionari.Logic.Nuevo;
 import com.practica.Concesionari.Logic.SegundaMano;
 import com.practica.Concesionari.Persistens.CocheDAO;
 import com.practica.Concesionari.Persistens.CocheDAOImplement;
@@ -27,8 +28,8 @@ public class INIT extends javax.swing.JFrame {
      * Creates new form INIT
      */
     public INIT() throws JDOMException, IOException {
-        initComponents();
         
+        initComponents();
         
     }
     
@@ -64,7 +65,7 @@ public class INIT extends javax.swing.JFrame {
             TextMatricula.setText(coches.get(indice).getMatricula());
             TextColor.setText(coches.get(indice).getColor());
             LabelGarantiaODueño.setText(coches.get(indice).getTipo().equals("nuevo") ? "Finalización garantia" : "Antiguo propietario");
-            TextFechaODueñp.setText(coches.get(indice).getTipo().equals("nuevo") ? coches.get(indice).getFinalizacion_garantia().toString() : ((SegundaMano)coches.get(indice)).getAntiguo_propietario().toString());
+            TextFechaODueñp.setText(coches.get(indice).getTipo().equals("nuevo") ? ((Nuevo)coches.get(indice)).getFinalizacion_garantia().toString() : ((SegundaMano)coches.get(indice)).getAntiguo_propietario());
             TextPrecio.setText(String.valueOf(coches.get(indice).getPrecio()));
             TextTipo.setText(String.valueOf(coches.get(indice).getTipo()));
             TextKm.setText(String.valueOf(coches.get(indice).getKm()));
@@ -108,6 +109,7 @@ public class INIT extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
+        jPanel11 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
@@ -160,7 +162,7 @@ public class INIT extends javax.swing.JFrame {
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         AñTextColor = new javax.swing.JTextField();
-        AñButtonCrear = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
 
         jLabel15.setText("jLabel15");
 
@@ -234,6 +236,10 @@ public class INIT extends javax.swing.JFrame {
 
         jPanel6.setBackground(new java.awt.Color(102, 102, 102));
         jPanel6.setLayout(new java.awt.CardLayout());
+
+        jPanel11.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel6.add(jPanel11, "card5");
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
 
@@ -377,7 +383,7 @@ public class INIT extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(107, 107, 107)
                         .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(121, Short.MAX_VALUE))
+                .addContainerGap(116, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -386,7 +392,7 @@ public class INIT extends javax.swing.JFrame {
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(87, Short.MAX_VALUE))
+                .addContainerGap(99, Short.MAX_VALUE))
         );
 
         jPanel6.add(jPanel2, "card3");
@@ -566,7 +572,7 @@ public class INIT extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(55, Short.MAX_VALUE)
+                .addContainerGap(50, Short.MAX_VALUE)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 576, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(67, 67, 67))
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -581,7 +587,7 @@ public class INIT extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(86, Short.MAX_VALUE))
+                .addContainerGap(98, Short.MAX_VALUE))
         );
 
         jPanel6.add(jPanel1, "card2");
@@ -635,7 +641,12 @@ public class INIT extends javax.swing.JFrame {
 
         AñTextColor.setText("jTextField6");
 
-        AñButtonCrear.setText("Crear");
+        jButton9.setText("jButton9");
+        jButton9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton9MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
         jPanel13.setLayout(jPanel13Layout);
@@ -656,8 +667,8 @@ public class INIT extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jLabel20)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)))
-                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(AñButtonCrear)
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton9)
                     .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(AñTextMatricula, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)
                         .addComponent(AñTextPrecio)
@@ -697,9 +708,9 @@ public class INIT extends javax.swing.JFrame {
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(AñTextAntiguoPropietario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel20))
-                .addGap(18, 18, 18)
-                .addComponent(AñButtonCrear)
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addGap(59, 59, 59)
+                .addComponent(jButton9)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
@@ -707,7 +718,7 @@ public class INIT extends javax.swing.JFrame {
         jPanel10Layout.setHorizontalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
-                .addContainerGap(130, Short.MAX_VALUE)
+                .addContainerGap(125, Short.MAX_VALUE)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
                         .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -723,7 +734,7 @@ public class INIT extends javax.swing.JFrame {
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(71, Short.MAX_VALUE))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
 
         jPanel6.add(jPanel10, "card4");
@@ -757,6 +768,7 @@ public class INIT extends javax.swing.JFrame {
         jPanel2.setVisible(false);
         jPanel1.setVisible(true);
         jPanel10.setVisible(false);
+        jPanel11.setVisible(false);
         criterio="nuevo";
         try {
             coches = filtrarCoches();
@@ -773,6 +785,7 @@ public class INIT extends javax.swing.JFrame {
         jPanel1.setVisible(false);
         jPanel2.setVisible(true);
         jPanel10.setVisible(false);
+        jPanel11.setVisible(false);
         criterio = "km0";
         try {
             coches = filtrarCoches();
@@ -841,25 +854,44 @@ public class INIT extends javax.swing.JFrame {
         jPanel2.setVisible(false);
         jPanel1.setVisible(false);
         jPanel10.setVisible(true);
+        jPanel11.setVisible(false);
         comprobarTipo();
                
     }//GEN-LAST:event_jButton8MouseClicked
 
     private void ComboAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboAgregarActionPerformed
         comprobarTipo();
+        
     }//GEN-LAST:event_ComboAgregarActionPerformed
-    private void comprobarTipo(){
-        if (ComboAgregar.getSelectedIndex()==0) {
-            AñTextAntiguoPropietario.setEnabled(false);
-            AñTextKm.setEnabled(false);
+
+    private void jButton9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton9MouseClicked
+        Coche coche = new Coche();
+        switch (ComboAgregar.getSelectedIndex()) {
+            case 0 -> coche = new Nuevo(AñTextMatricula.getText(), AñTextColor.getText(), Integer.parseInt(AñTextPrecio.getText()));
+            case 1 -> coche = new Km0(AñTextMatricula.getText(), AñTextColor.getText(), Integer.parseInt(AñTextPrecio.getText()), Double.parseDouble(AñTextKm.getText()));
+            case 2 -> coche = new SegundaMano(AñTextMatricula.getText(), AñTextColor.getText(), Integer.parseInt(AñTextPrecio.getText()), Double.parseDouble(AñTextKm.getText()), AñTextAntiguoPropietario.getText());
+            default -> {
+            }   
         }
-        else if(ComboAgregar.getSelectedIndex()==1){
-            AñTextKm.setEnabled(true);
+        dao.crear(coche);
+        
+    }//GEN-LAST:event_jButton9MouseClicked
+    private int comprobarTipo(){
+        
+        switch (ComboAgregar.getSelectedIndex()) {
+            case 0 -> {
+                AñTextAntiguoPropietario.setEnabled(false);
+                AñTextKm.setEnabled(false);
+            }
+            case 1 -> AñTextKm.setEnabled(true);
+            case 2 -> {
+                AñTextKm.setEnabled(true);
+                AñTextAntiguoPropietario.setEnabled(true);
+            }
+            default -> {
+            }
         }
-        else if (ComboAgregar.getSelectedIndex()==2) {
-            AñTextKm.setEnabled(true);
-            AñTextAntiguoPropietario.setEnabled(true);
-        }
+        return ComboAgregar.getSelectedIndex();
     }
     /**
      * @param args the command line arguments
@@ -871,7 +903,6 @@ public class INIT extends javax.swing.JFrame {
     private javax.swing.JTextField ATextKm;
     private javax.swing.JTextField ATextMatricula;
     private javax.swing.JTextField ATextPrecio;
-    private javax.swing.JButton AñButtonCrear;
     private javax.swing.JTextField AñTextAntiguoPropietario;
     private javax.swing.JTextField AñTextColor;
     private javax.swing.JTextField AñTextKm;
@@ -895,6 +926,7 @@ public class INIT extends javax.swing.JFrame {
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -918,6 +950,7 @@ public class INIT extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

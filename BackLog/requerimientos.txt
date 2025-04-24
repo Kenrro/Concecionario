@@ -24,14 +24,14 @@ En Persistencia
     + Hacer evitar matricula repetida /
     + Filtrar nodos 
     + Cargar en objetos /
-    + al eliminar en objeto eliminar en xml
-    + Aplicar estado de los vehiculos alquilables (Disponible/en uso)
+    + al eliminar en objeto eliminar en xml /
+    + Aplicar estado de los vehiculos alquilables (Disponible/en uso) /
     + 
 En logica
-    + Lógica de vender y alquilar
-    + Listar los vehiculos dependiendo de su tipo
+    + Lógica de vender y alquilar /
+    + Listar los vehiculos dependiendo de su tipo /
     + Todo debe funcionar de tal forma que se pueda llamar desde
-    el igu
+    el igu /
     + 
 Igu
-    + Hacerlo al tener un primera versión estable
+    + Hacerlo al tener un primera versión estable /

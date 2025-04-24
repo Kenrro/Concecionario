@@ -4,17 +4,12 @@
  */
 package com.practica.Concesionari.Persistens;
 
-import com.practica.Concesionari.Logic.Coche;
-import com.practica.Concesionari.Logic.Km0;
-import com.practica.Concesionari.Logic.Nuevo;
-import com.practica.Concesionari.Logic.SegundaMano;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.List;
 import org.jdom2.Document;
 import org.jdom2.Element;
@@ -23,17 +18,16 @@ import org.jdom2.input.SAXBuilder;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
 
-/**
- *
- * @author Kevin
- */
 public class xmlConector {
+    // Los metodos retornan true y false para permitir a la lógica continuar o detenerse.
+    
     
     // Solo debe crear, eliminar, retornar debe tratar con elementos, y con el xml
     public xmlConector() {
         estructuraDirecotrio();
         crearXml();
     }
+    // Comprueba la existencia del directorio, si no existe lo crea.
     private void estructuraDirecotrio(){
         try{
             File directorio = new File(ruta.getParent().toString());
@@ -44,6 +38,7 @@ public class xmlConector {
             System.out.println(e);
         }
     }
+    // Comprueba la existencia del xml, si no existe lo crea
     private void crearXml(){
         if(Files.notExists(ruta)){
             try{
@@ -63,16 +58,13 @@ public class xmlConector {
         Document doc = new SAXBuilder().build(new File(ruta.toString()));
         return doc;
     }
-    public static Document cargarXmlStatic() throws JDOMException, IOException {
-        Document doc = new SAXBuilder().build(new File(ruta.toString()));
-        return doc;
-    }
     // Actualiza el xml
     private void actualizarXml(Document doc) throws IOException{
         XMLOutputter xml_output = new XMLOutputter(Format.getPrettyFormat());
         xml_output.output(doc, new FileWriter(ruta.toString()));
     }
     // Comprueba si la matricula ya existe, de ser asi retorna un true
+    // Evita la repetición de matriculas
     public boolean comprobarExitencia(String matricula) throws JDOMException, IOException{
         Document doc = cargarXml();
         Element root = doc.getRootElement();
@@ -81,6 +73,7 @@ public class xmlConector {
         }
         return false;
     }
+    // Recibe un elemento y lo agrega al xml
     public boolean agregarCoche(Element elemento){
         try{
             if(comprobarExitencia(elemento.getAttributeValue("Matricula"))) return false;
@@ -112,10 +105,10 @@ public class xmlConector {
     }
     // Metodos de clase
     
-    // Lista todos los coches y los retorna, de esta forma se cargan al empezar el programa
+    // Lista todos los coches y los retorna.
     public List<Element> listarCoches() throws JDOMException, IOException{
-        
         return cargarXml().getRootElement().getChildren();
     }
-    private static final Path ruta = Paths.get("Concesionario\\Concesionario.xml");
+    // Ruta del xml a leer.
+    private final Path ruta = Paths.get("Concesionario\\Concesionario.xml");
 }
