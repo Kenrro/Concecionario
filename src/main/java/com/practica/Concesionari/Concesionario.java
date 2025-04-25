@@ -53,5 +53,4 @@ public class Concesionario {
     // Atributos
     
     static public List<Coche> lista_coches = new ArrayList<>();
-    static xmlConector xml = new xmlConector();
 }
